@@ -14,7 +14,12 @@ get "/posts" do
   erb :"posts/index.html"
 end
 
+get "/posts/new" do
+  erb :"posts/new.html"
+end
+
 post "/posts" do
   Post.create(params[:post])
+  redirect "/posts"
 end
 
