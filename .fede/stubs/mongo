@@ -1,0 +1,6 @@
+
+  #! /bin/sh
+
+  fede exec -it mongo mongo "$@"
+
+  

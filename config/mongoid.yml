@@ -1,0 +1,25 @@
+defaults: &defaults
+  hosts:
+    - mongo
+
+development:
+  sessions:
+    default:
+      <<: *defaults
+      database: sfd_dev
+
+test:
+  sessions:
+    default:
+      <<: *defaults
+      database: sfd_test
+
+# set these environment variables on your prod server
+production:
+  sessions:
+    default:
+      hosts:
+        - "<%= ENV['MONGOID_HOST'] %>:<%= ENV['MONGOID_PORT'] %>"
+      username: <%= ENV['MONGOID_USERNAME'] %>
+      password: <%= ENV['MONGOID_PASSWORD'] %>
+      database: <%= ENV['MONGOID_DATABASE'] %>
