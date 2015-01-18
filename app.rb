@@ -15,11 +15,25 @@ get "/posts" do
 end
 
 get "/posts/new" do
-  erb :"posts/new.html"
+  @post = Post.new
+  @action = "/posts"
+  erb :"posts/form.html"
 end
 
 post "/posts" do
   Post.create(params[:post])
+  redirect "/posts"
+end
+
+get "/posts/:id/edit" do
+  @post = Post.find(params[:id])
+  @action = "/posts/#{@post.id}"
+  erb :"posts/form.html"
+end
+
+post "/posts/:id" do
+  post = Post.find(params[:id])
+  post.update_attributes(params[:post])
   redirect "/posts"
 end
 

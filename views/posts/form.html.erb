@@ -1,0 +1,13 @@
+<form action="<%=@action%>" method="POST">
+  <label>
+    Title
+    <input type="text" name="post[title]" value="<%=@post.title%>">
+  </label>
+  <br>
+  <label>
+    Content
+    <textarea name="post[content]"><%=@post.content%></textarea>
+  </label>
+  <br>
+  <input type="submit">
+</form>
